@@ -20,7 +20,7 @@ public class ChangeIconGUI implements InventoryHolder, Listener {
     private Inventory inv;
 
     public ChangeIconGUI() {
-        String title = Homegui.PLUGIN.getConfig().getString("gui-icon-header").replace('&', '§');
+        String title = Homegui.PLUGIN.getConfig().getString("GUI-Texts.gui-icon-header").replace('&', '§');
         title = title.replace("§8", "");
         inv = Bukkit.createInventory(this, 54, title);
         initItems();
@@ -28,7 +28,7 @@ public class ChangeIconGUI implements InventoryHolder, Listener {
 
     private ItemStack addItemLore(ItemStack item) {
         final ItemMeta meta = item.getItemMeta();
-        meta.setLore(Arrays.asList(Homegui.PLUGIN.getConfig().getString("icon-select-lore-message").replace('&', '§')));
+        meta.setLore(Arrays.asList(Homegui.PLUGIN.getConfig().getString("GUI-Texts.icon-select-lore-message").replace('&', '§')));
         item.setItemMeta(meta);
         return item;
     }

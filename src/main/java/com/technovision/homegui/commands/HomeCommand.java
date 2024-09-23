@@ -36,16 +36,16 @@ public class HomeCommand implements CommandExecutor {
                     if (args[0].equalsIgnoreCase("reload")) {
                         if (player.hasPermission("home.rl") || player.isOp()) {
                             Homegui.PLUGIN.reloadConfig();
-                            sender.sendMessage("§7[§eHomeGUI§7]§f: Config file reloaded");
+                            sender.sendMessage(Homegui.PLUGIN.getConfig().getString("Messages.config-reloaded").replace('&', '§'));
                         } else {
-                            sender.sendMessage(ChatColor.RED + "You do not have permission to use that!");
+                            sender.sendMessage(Homegui.PLUGIN.getConfig().getString("Messages.no-permission").replace('&', '§'));
                         }
                     }
                 }
             }
 
         } else {
-            sender.sendMessage(ChatColor.RED + "Only players can use this command!");
+            sender.sendMessage(Homegui.PLUGIN.getConfig().getString("Messages.players-only").replace('&', '§'));
         }
         return true;
     }

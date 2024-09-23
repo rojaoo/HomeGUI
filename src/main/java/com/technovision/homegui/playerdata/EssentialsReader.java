@@ -44,8 +44,23 @@ public class EssentialsReader {
             for (String name : names) {
                 Set<String> data = fileReader.getConfigurationSection("homes." + name).getKeys(false);
                 for (String info : data) {
-                    if (info.matches("world")) {
+                    if (info.matches("world-name")) {
                         world = fileReader.get("homes." + name + "." + info).toString();
+                        
+                        switch (world) {
+                            case "world":
+                                world = "Overworld";
+                                break;
+                            case "world_nether":
+                                world = "The Nether";
+                                break;
+                            case "world_the_end":
+                                world = "The End";
+                                break;
+                            default:
+                                break;
+                        }
+
                     } else if (info.matches("x")) {
                         x = Double.parseDouble(fileReader.get("homes." + name + "." + info).toString());
                     } else if (info.matches("y")) {

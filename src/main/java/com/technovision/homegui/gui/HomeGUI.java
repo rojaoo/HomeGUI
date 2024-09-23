@@ -21,7 +21,7 @@ public class HomeGUI implements InventoryHolder {
     public HomeGUI(UUID playerUUID) {
         EssentialsReader reader = new EssentialsReader(playerUUID.toString());
         homes = reader.getHomes();
-        String title = Homegui.PLUGIN.getConfig().getString("gui-main-header").replace('&', '§');
+        String title = Homegui.PLUGIN.getConfig().getString("GUI-Texts.gui-main-header").replace('&', '§');
         title = title.replace("§8", "");
         inv = Bukkit.createInventory(this, calculateSize(), title);
         allHomes.put(playerUUID.toString(), homes);
@@ -46,10 +46,10 @@ public class HomeGUI implements InventoryHolder {
         for (Home home : homes) {
             name = home.getName().substring(0, 1).toUpperCase() + home.getName().substring(1);
             ItemStack item = Homegui.dataReader.getItem(playerID, home.getName());
-            String nameColor = Homegui.PLUGIN.getConfig().getString("home-color").replace("&", "§");
+            String nameColor = Homegui.PLUGIN.getConfig().getString("GUI-Texts.home-color").replace("&", "§");
             name = nameColor + name;
-            List<String> lore = Homegui.PLUGIN.getConfig().getStringList("home-lore");
-            String location = "§f " + home.getX() + "x§7,§f " + home.getY() + "y§7,§f " + home.getZ() + "z";
+            List<String> lore = Homegui.PLUGIN.getConfig().getStringList("GUI-Texts.home-lore");
+            String location = "" + home.getX() + ", " + home.getY() + ", " + home.getZ() + "";
             for (int i = 0; i < lore.size(); i++) {
                 String newLine = lore.get(i).replace("{location}", location);
                 newLine = newLine.replace("{world}", home.getWorld());
